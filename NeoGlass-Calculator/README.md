@@ -1,4 +1,4 @@
-# 🧮 NeoGlass Calculator
+# NeoGlass Calculator
 
 A modern glassmorphism calculator built using HTML, CSS, and JavaScript.
 
