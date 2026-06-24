@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ================================================
-       NeoGlass Calculator — index.html
-       Premium Glassmorphism Portfolio Project
-       Author: Neha Biswal
-       ================================================ -->
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO -->
+  
   <title>NeoGlass Calculator | Premium UI by Neha Biswal</title>
   <meta name="description" content="A handcrafted premium glassmorphism calculator — history panel, live expression, keyboard support, and elegant operator glow effects." />
 
-  <!-- Google Fonts: Inter (UI) + JetBrains Mono (numbers) -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -23,39 +19,35 @@
 
 <body>
 
-  <!-- ── Background canvas for ambient particles ──────── -->
+  <!-- bg -->
   <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-  <!-- ── Atmospheric light leak blobs ─────────────────── -->
+  <!-- glow -->
   <div class="ambient-blob blob-1" aria-hidden="true"></div>
   <div class="ambient-blob blob-2" aria-hidden="true"></div>
   <div class="ambient-blob blob-3" aria-hidden="true"></div>
 
-  <!-- ── Main page wrapper ─────────────────────────────── -->
+  <!-- main -->
   <main class="calculator-wrapper" role="main">
 
-    <!-- ── History panel (slides in from the right of the card) ── -->
-    <!--
-      This panel is a sibling to .calculator inside the wrapper.
-      It slides in/out via the 'open' class toggled in JS.
-    -->
-    <aside
+  <!-- history -->
+       <aside
       class="history-panel"
       id="history-panel"
       aria-label="Calculation history"
       aria-hidden="true"
     >
-      <!-- Panel header -->
+      <!-- header -->
       <div class="history-header">
         <span class="history-title">History</span>
-        <!-- Clear all history -->
+        <!-- clear -->
         <button
           class="history-clear-btn"
           id="history-clear-btn"
           aria-label="Clear all history"
           title="Clear history"
         >
-          <!-- Trash icon (inline SVG — no external dependency) -->
+          <!-- icon -->
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round"
@@ -69,22 +61,21 @@
         </button>
       </div>
 
-      <!-- Scrollable list of past calculations -->
+     <!-- list -->
       <ul class="history-list" id="history-list" aria-label="Past calculations" role="list">
-        <!-- Items injected by JS — empty state shown by CSS -->
       </ul>
 
-      <!-- Empty state (shown via CSS when list is empty) -->
+      <!-- empty -->
       <div class="history-empty" id="history-empty" aria-hidden="true">
         <span class="history-empty-icon" aria-hidden="true">∅</span>
         <p>No calculations yet</p>
       </div>
     </aside>
 
-    <!-- ── Calculator card ──────────────────────────────── -->
+    <!-- calc -->
     <article class="calculator" id="calculator" aria-label="NeoGlass Calculator">
 
-      <!-- ── Top bar: brand + history toggle + mode badge ── -->
+      <!-- top -->
       <header class="top-bar">
         <div class="brand-label">
           <span class="brand-dot" aria-hidden="true"></span>
@@ -112,7 +103,7 @@
             <span class="history-toggle-label">History</span>
           </button>
 
-          <!-- Live mode badge: CALC / ERROR -->
+          <!-- badge -->
           <span class="mode-badge" id="mode-badge">CALC</span>
         </div>
       </header>
@@ -120,14 +111,10 @@
       <!-- ── Display screen ────────────────────────────── -->
       <section class="display-section" aria-label="Calculator display">
 
-        <!-- Top reflection bar (CSS detail) -->
+      <!-- shine -->
         <div class="display-reflection" aria-hidden="true"></div>
 
-        <!--
-          Live expression preview — shows the full expression as you type.
-          e.g.  "12 + 8"  or  "25 × 4 ="
-        -->
-        <div
+            <div
           class="expression-display"
           id="expression-display"
           aria-live="polite"
@@ -142,21 +129,12 @@
           aria-label="Current value"
         >0</div>
 
-        <!-- Bottom scan line — thin digital accent -->
+        <!-- Bottom scan line -->
         <div class="display-scanline" aria-hidden="true"></div>
 
       </section>
 
-      <!-- ── Button grid ────────────────────────────────── -->
-      <!--
-        Layout  (4 columns):
-        [ AC ] [ DEL ] [  %  ] [  ÷  ]
-        [  7 ] [  8  ] [  9  ] [  ×  ]
-        [  4 ] [  5  ] [  6  ] [  −  ]
-        [  1 ] [  2  ] [  3  ] [  +  ]
-        [   0  (wide)  ] [  .  ] [  =  ]
-      -->
-      <section class="button-grid" aria-label="Calculator buttons">
+            <section class="button-grid" aria-label="Calculator buttons">
 
         <!-- Row 1 -->
         <button class="btn btn-control"                    id="btn-ac"  data-action="clear"    aria-label="All Clear">AC</button>
