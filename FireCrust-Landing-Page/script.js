@@ -1,8 +1,3 @@
-/* =============================================
-   FIRECRUST — REFINED SCRIPT
-   Fire particles + Scroll reveal + Parallax
-   ============================================= */
-
 // ─── FIRE PARTICLE SYSTEM ───────────────────
 
 const canvas = document.getElementById('particle-canvas');
@@ -62,7 +57,7 @@ class Particle {
   }
 }
 
-// Only 60 particles — lightweight, subtle
+// 60 particles 
 const particles = Array.from({ length: 60 }, () => new Particle());
 
 function animateParticles() {
@@ -108,7 +103,7 @@ hiddenEls.forEach((el) => {
 const pizza = document.querySelector('.hero-pizza');
 
 window.addEventListener('scroll', () => {
-  // Gentle parallax — only offset, not override the scrollY transform from JS hover
+  // Gentle parallax 
   if (pizza) {
     pizza.style.transform = `translateY(${window.scrollY * 0.04}px)`;
   }
