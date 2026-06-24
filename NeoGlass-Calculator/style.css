@@ -1,9 +1,3 @@
-/* ============================================================
-   NeoGlass Calculator — style.css
-   Premium Glassmorphism — v3 (History + Live Expression)
-   Author: Neha Biswal (Portfolio Project)
-   ============================================================ */
-
 /* ── 1. Design Tokens ───────────────────────────────────── */
 :root {
   /* Background */
@@ -135,12 +129,6 @@ body {
 }
 
 /* ── 6. Calculator Wrapper ──────────────────────────────── */
-/*
-  The wrapper is the positioning context for the history panel.
-  The calculator stays centered via flexbox.
-  The history panel is absolutely positioned — it floats
-  to the LEFT of the calculator and NEVER shifts its position.
-*/
 .calculator-wrapper {
   position: relative;       /* history panel positions relative to this */
   z-index: 1;
@@ -153,12 +141,6 @@ body {
 }
 
 /* ── 7. History Panel ───────────────────────────────────── */
-/*
-  Absolutely positioned so it NEVER affects the calculator's
-  position in the flex layout. It floats to the left of the
-  calculator card using calc() to know where the card edge is.
-  right = 50% (center) + half calc-width + 14px gap
-*/
 .history-panel {
   position: absolute;
   right: calc(50% + var(--calc-width) / 2 + 14px);
@@ -895,25 +877,12 @@ body {
 
 /* ── 18. Responsive ─────────────────────────────────────── */
 
-/*
-  On screens wide enough that the panel fits to the left (> 680px):
-  Panel is absolutely positioned — calculator stays perfectly centered.
-
-  On small screens (≤ 680px):
-  Panel switches to a fixed overlay anchored to the top of the
-  viewport, so it doesn't need space beside the calculator.
-*/
 @media (max-width: 680px) {
-  /* Wrapper: normal flow, no special handling needed */
   .calculator-wrapper {
     align-items: center;
     padding: 20px 16px;
   }
 
-  /*
-    On mobile the panel detaches from the abs-positioning formula
-    and instead anchors near the top of the page as a floating sheet.
-  */
   .history-panel {
     position: fixed;
     top: 16px;
