@@ -1,4 +1,4 @@
-// ─── FIRE PARTICLE SYSTEM ───────────────────
+// particles
 
 const canvas = document.getElementById('particle-canvas');
 const ctx    = canvas.getContext('2d');
@@ -17,7 +17,7 @@ class Particle {
   }
 
   reset() {
-    // Spawn near bottom edges, simulating rising fire embers
+// particle motion
     this.x     = Math.random() * W;
     this.y     = H + 10;
     this.size  = Math.random() * 2.5 + 0.8;
@@ -72,7 +72,7 @@ function animateParticles() {
 animateParticles();
 
 
-// ─── SCROLL REVEAL ──────────────────────────
+// reveal
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -98,19 +98,18 @@ hiddenEls.forEach((el) => {
 });
 
 
-// ─── HERO PIZZA PARALLAX ─────────────────────
+// parallax
 
 const pizza = document.querySelector('.hero-pizza');
 
 window.addEventListener('scroll', () => {
-  // Gentle parallax 
   if (pizza) {
     pizza.style.transform = `translateY(${window.scrollY * 0.04}px)`;
   }
 });
 
 
-// ─── SMOOTH NAVBAR ACTIVE STATE ──────────────
+// navbar
 
 const sections = document.querySelectorAll('section[id]');
 const navLinks  = document.querySelectorAll('nav a[href^="#"]');
