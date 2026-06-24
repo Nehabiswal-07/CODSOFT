@@ -12,9 +12,7 @@ The projects focus on responsive web design, frontend development concepts, UI s
 
 A responsive pizza restaurant landing page designed with modern UI styling and interactive sections.
 
-🔗 Live Demo:  
-https://nehabiswal-07.github.io/CODSOFT/FireCrust-Landing-Page/
-
+🔗 [View Live Demo](https://nehabiswal-07.github.io/CODSOFT/FireCrust-Landing-Page/)
 ### Technologies Used
 - HTML5
 - CSS3
@@ -26,9 +24,7 @@ https://nehabiswal-07.github.io/CODSOFT/FireCrust-Landing-Page/
 
 A modern glassmorphism calculator with responsive layout and interactive calculator functionality.
 
-🔗 Live Demo:  
-https://nehabiswal-07.github.io/CODSOFT/NeoGlass-Calculator/
-
+🔗 [View Live Demo](https://nehabiswal-07.github.io/CODSOFT/NeoGlass-Calculator/)
 ### Technologies Used
 - HTML5
 - CSS3
@@ -40,9 +36,7 @@ https://nehabiswal-07.github.io/CODSOFT/NeoGlass-Calculator/
 
 A personal developer portfolio website showcasing skills, projects, resume, and contact information.
 
-🔗 Live Demo:  
-https://nehabiswal-07.github.io/CODSOFT/Portfolio/
-
+🔗 [View Live Demo](https://nehabiswal-07.github.io/CODSOFT/Portfolio/)
 ### Technologies Used
 - HTML5
 - CSS3
