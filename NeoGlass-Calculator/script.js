@@ -1,27 +1,6 @@
-/* ============================================================
-   NeoGlass Calculator — script.js
-   v4: Bug-fixed calculation engine + working history
-   Author: Neha Biswal (Portfolio Project)
-
-   ROOT CAUSE OF BUG (now fixed):
-   handleNumber() was resetting operator + previousValue
-   whenever justCalculated was true — but justCalculated
-   is also set to true after pressing an OPERATOR (to flag
-   "waiting for second operand"). This wiped the saved state
-   before the second number could be entered, making every
-   calculation return only the second typed number.
-
-   FIX: Introduce a separate flag `waitingForOperand` that
-   is ONLY true when waiting for the second number after
-   pressing an operator. `justCalculated` is now reserved
-   exclusively for "the = button was just pressed".
-   ============================================================ */
-
 'use strict';
 
-/* ─────────────────────────────────────────────────────────
-   1. DOM REFERENCES
-   ───────────────────────────────────────────────────────── */
+// dom
 const mainDisplay       = document.getElementById('main-display');
 const expressionDisplay = document.getElementById('expression-display');
 const displaySection    = document.getElementById('calculator').querySelector('.display-section');
@@ -33,20 +12,7 @@ const historyEmpty      = document.getElementById('history-empty');
 const historyToggleBtn  = document.getElementById('history-toggle-btn');
 const historyClearBtn   = document.getElementById('history-clear-btn');
 
-/* ─────────────────────────────────────────────────────────
-   2. CALCULATOR STATE
-   ─────────────────────────────────────────────────────────
-   We use TWO separate boolean flags instead of one — this is
-   the core of the bug fix:
-
-   • waitingForOperand — true RIGHT AFTER pressing an operator
-     (+, −, ×, ÷). Means "next digit starts the second number".
-     previousValue and operator are PRESERVED during this state.
-
-   • justCalculated — true ONLY after pressing "=".
-     Means "next digit starts a brand-new calculation".
-     All state is reset when a number is typed.
-   ───────────────────────────────────────────────────────── */
+// state
 let currentValue      = '0';   // The number shown in the main display
 let previousValue     = '';    // The first operand (saved when operator is pressed)
 let operator          = null;  // The active operator: '+', '−', '×', '÷'
@@ -57,36 +23,21 @@ let justCalculated    = false; // True after '=' is pressed
 let glowTimer   = null;
 let resultTimer = null;
 
-/* ─────────────────────────────────────────────────────────
-   3. HISTORY STATE
-   ───────────────────────────────────────────────────────── */
+// history
 const MAX_HISTORY  = 50;
 let historyEntries = []; // [{ expr: '2 + 2', result: '4' }, ...]
 
-/* ─────────────────────────────────────────────────────────
-   4. LIVE EXPRESSION STRING
-   Tracks what's shown in the small top line of the display.
-   e.g. after pressing 5 then ×: liveExpr = "5 × "
-   After typing 3:                liveExpr = "5 × 3"  (appended in refreshExpressionLine)
-   ───────────────────────────────────────────────────────── */
+// live expression string
 let liveExpr = ''; // The "left side + operator" fragment stored after operator press
 
-/* ─────────────────────────────────────────────────────────
-   5. DISPLAY HELPERS
-   ───────────────────────────────────────────────────────── */
-
-/**
- * updateMainDisplay(value)
- * Shows a value in the large number area. Auto-shrinks font for
- * long numbers and plays a micro pop animation on every update.
- */
+//display helpers
 function updateMainDisplay(value) {
   mainDisplay.textContent = value;
 
-  // Reset all modifier classes
+  // reset all modifier classes
   mainDisplay.classList.remove('medium', 'small', 'error-state', 'result-glow-text');
 
-  // Adaptive font size: shrink progressively for long numbers
+  // font size
   const len = String(value).length;
   if      (len > 12) mainDisplay.classList.add('small');
   else if (len > 8)  mainDisplay.classList.add('medium');
@@ -94,42 +45,21 @@ function updateMainDisplay(value) {
   // Error styling
   if (value === 'Error') mainDisplay.classList.add('error-state');
 
-  // Pop animation — remove + reflow + re-add to always replay it
+  // pop animation 
   mainDisplay.classList.remove('pop');
   void mainDisplay.offsetWidth; // force browser reflow
   mainDisplay.classList.add('pop');
 }
 
-/**
- * updateExpressionDisplay(text)
- * Updates the small expression line at the top of the display.
- */
 function updateExpressionDisplay(text) {
   expressionDisplay.textContent = text || '\u00A0'; // non-breaking space when empty
 }
 
-/**
- * setModeBadge(mode)
- * Changes the CALC / ERROR pill in the top-right corner.
- */
 function setModeBadge(mode) {
   modeBadge.textContent = mode;
   modeBadge.classList.toggle('error', mode === 'ERROR');
 }
 
-/**
- * refreshExpressionLine()
- * Rebuilds the small expression preview line based on current state.
- * Called after every user action so the display is always up-to-date.
- *
- *  State                          → Expression line shows
- *  ─────────────────────────────────────────────────────
- *  Typing first operand           → "25"           (the number being typed)
- *  Operator pressed               → "25 × "        (operand + operator, trailing space)
- *  Typing second operand          → "25 × 3"       (liveExpr + current digit)
- *  = pressed                      → "25 × 3 ="     (set directly in handleEqual)
- *  Fresh start / AC               → (empty)
- */
 function refreshExpressionLine() {
   if (waitingForOperand) {
     // Operator was just pressed, second number not started yet
@@ -147,9 +77,7 @@ function refreshExpressionLine() {
   }
 }
 
-/* ─────────────────────────────────────────────────────────
-   6. VISUAL EFFECTS — Glow & Result Flash
-   ───────────────────────────────────────────────────────── */
+// visual effects — Glow & Result Flash
 
 // Map operator symbols → CSS glow class names
 const operatorGlowMap = {
@@ -159,17 +87,11 @@ const operatorGlowMap = {
   '÷': 'glow-div',
 };
 
-/**
- * triggerOperatorGlow(op)
- * Adds a colored ambient glow around the calculator card for 1.8s,
- * then the default breathing animation resumes automatically.
- * Each operator has its own color: blue / purple / cyan / amber.
- */
 function triggerOperatorGlow(op) {
   const glowClass = operatorGlowMap[op];
   if (!glowClass) return;
 
-  // Remove any existing glow classes first
+
   calculatorEl.classList.remove('glow-add', 'glow-sub', 'glow-mul', 'glow-div', 'result-glow');
   calculatorEl.classList.add(glowClass);
 
@@ -179,11 +101,6 @@ function triggerOperatorGlow(op) {
   }, 1800);
 }
 
-/**
- * triggerResultGlow()
- * Brief premium flash on the card + display when = is pressed.
- * Gives tactile feedback that the calculation completed.
- */
 function triggerResultGlow() {
   // Card glow flash
   calculatorEl.classList.remove('result-glow');
@@ -204,42 +121,19 @@ function triggerResultGlow() {
   }, 700);
 }
 
-/* ─────────────────────────────────────────────────────────
-   7. BUTTON ANIMATIONS
-   ───────────────────────────────────────────────────────── */
+// button animations
 
-/**
- * animateButton(button)
- * Adds 'pressed' class for 110ms to play the CSS scale-down effect.
- */
 function animateButton(button) {
   button.classList.add('pressed');
   setTimeout(() => button.classList.remove('pressed'), 110);
 }
 
-/**
- * highlightActiveOperator(activeBtn)
- * Keeps one operator button visually highlighted (active-op class)
- * while waiting for the second operand. Clears all when passed null.
- */
 function highlightActiveOperator(activeBtn) {
   document.querySelectorAll('.btn-operator').forEach(btn => btn.classList.remove('active-op'));
   if (activeBtn) activeBtn.classList.add('active-op');
 }
 
-/* ─────────────────────────────────────────────────────────
-   8. CORE CALCULATION ENGINE
-   ───────────────────────────────────────────────────────── */
-
-/**
- * calculate(prev, curr, op)
- * Performs arithmetic and returns the result as a string.
- * Returns 'Error' for invalid inputs or division by zero.
- *
- * Floating-point fix: toPrecision(12) → parseFloat strips
- * trailing zeros and corrects drift.
- * Example: 0.1 + 0.2 → "0.3" (not "0.30000000000000004")
- */
+// calc
 function calculate(prev, curr, op) {
   const a = parseFloat(prev);
   const b = parseFloat(curr);
@@ -264,16 +158,7 @@ function calculate(prev, curr, op) {
   return String(parseFloat(result.toPrecision(12)));
 }
 
-/* ─────────────────────────────────────────────────────────
-   9. HISTORY MANAGEMENT
-   ───────────────────────────────────────────────────────── */
-
-/**
- * addToHistory(expr, result)
- * Prepends a new entry to historyEntries and re-renders the list.
- * expr   — e.g. "12 + 8"
- * result — e.g. "20"
- */
+// history management
 function addToHistory(expr, result) {
   if (result === 'Error') return; // Don't save failed calculations
 
@@ -285,11 +170,6 @@ function addToHistory(expr, result) {
   renderHistory();
 }
 
-/**
- * renderHistory()
- * Rebuilds the entire history <ul> from the historyEntries array.
- * Also manages the empty-state placeholder.
- */
 function renderHistory() {
   historyList.innerHTML = '';
 
@@ -306,12 +186,12 @@ function renderHistory() {
     li.setAttribute('role', 'listitem');
     li.title = 'Click to use this result';
 
-    // Small dim line: "12 + 8 ="
+    // Small dim line
     const exprEl = document.createElement('div');
     exprEl.className = 'history-expr';
     exprEl.textContent = `${entry.expr} =`;
 
-    // Large result line: "20"
+    // Large result line
     const resultEl = document.createElement('div');
     resultEl.className = 'history-result';
     resultEl.textContent = entry.result;
@@ -319,11 +199,7 @@ function renderHistory() {
     li.appendChild(exprEl);
     li.appendChild(resultEl);
 
-    /*
-     * Clicking a history item loads its result into the calculator.
-     * The user can then continue calculating from that number.
-     */
-    li.addEventListener('click', () => {
+       li.addEventListener('click', () => {
       currentValue      = entry.result;
       previousValue     = '';
       operator          = null;
@@ -340,24 +216,14 @@ function renderHistory() {
   });
 }
 
-/**
- * clearHistory()
- * Deletes all history entries and re-renders the empty state.
- */
 function clearHistory() {
   historyEntries = [];
   renderHistory();
 }
 
-/* ─────────────────────────────────────────────────────────
-   10. HISTORY PANEL TOGGLE
-   ───────────────────────────────────────────────────────── */
+// history pannel toggle
 let historyOpen = false;
 
-/**
- * toggleHistory()
- * Shows or hides the history panel with a smooth CSS transition.
- */
 function toggleHistory() {
   historyOpen = !historyOpen;
   historyPanel.classList.toggle('open', historyOpen);
@@ -369,40 +235,15 @@ function toggleHistory() {
 historyToggleBtn.addEventListener('click', toggleHistory);
 historyClearBtn.addEventListener('click', clearHistory);
 
-/* ─────────────────────────────────────────────────────────
-   11. INPUT HANDLERS
-   ─────────────────────────────────────────────────────────
-   Each handler is responsible for exactly one button action.
-   State changes are explicit and easy to follow.
-   ───────────────────────────────────────────────────────── */
+// input handlers
 
-/**
- * handleNumber(digit)
- * Called when the user presses any digit button (0–9).
- *
- * Three cases:
- *  A) waitingForOperand = true  → operator was just pressed.
- *     Start the second number. Keep operator + previousValue intact.
- *
- *  B) justCalculated = true     → "=" was just pressed.
- *     Discard the result and start a fresh calculation.
- *
- *  C) Normal typing             → append the digit to currentValue.
- */
 function handleNumber(digit) {
 
   if (waitingForOperand) {
-    /* ── Case A: Starting second operand ──────────────────
-       The operator was just pressed. The next digit begins the
-       second number. We must NOT touch operator or previousValue.
-       This is where the previous version had its bug. */
-    currentValue      = digit;
+       currentValue      = digit;
     waitingForOperand = false;
-    // operator and previousValue are intentionally left as-is
-
+   
   } else if (justCalculated) {
-    /* ── Case B: Fresh start after = ─────────────────────
-       Clear everything and begin a new calculation. */
     currentValue   = digit;
     previousValue  = '';
     operator       = null;
@@ -410,11 +251,8 @@ function handleNumber(digit) {
     justCalculated = false;
 
   } else {
-    /* ── Case C: Continuing to type the current number ────
-       Cap at 12 significant digits to prevent display overflow. */
-    if (currentValue.replace('.', '').replace('-', '').length >= 12) return;
+       if (currentValue.replace('.', '').replace('-', '').length >= 12) return;
 
-    // Replace a lone "0" instead of appending to it
     currentValue = (currentValue === '0') ? digit : currentValue + digit;
   }
 
@@ -422,19 +260,12 @@ function handleNumber(digit) {
   refreshExpressionLine();
 }
 
-/**
- * handleDecimal()
- * Adds a decimal point. Only one is allowed per number.
- * If currentValue already has a ".", the press is silently ignored.
- */
 function handleDecimal() {
 
   if (waitingForOperand) {
-    // Start second operand as "0."
     currentValue      = '0.';
     waitingForOperand = false;
-    // operator and previousValue preserved
-
+    
   } else if (justCalculated) {
     // Start fresh decimal number after a result
     currentValue   = '0.';
@@ -444,91 +275,56 @@ function handleDecimal() {
     justCalculated = false;
 
   } else if (!currentValue.includes('.')) {
-    // Safe to add decimal — no existing dot in this number
     currentValue += '.';
 
   }
-  // else: already has a dot → silently ignore (prevents "0.5." etc.)
-
+  
   updateMainDisplay(currentValue);
   refreshExpressionLine();
 }
 
-/**
- * handleOperator(op, buttonEl)
- * Called when +, −, ×, or ÷ is pressed.
- *
- * Supports chaining: "2 + 3 ×" first evaluates "2 + 3 = 5",
- * then sets up "5 ×" for the next operand.
- */
 function handleOperator(op, buttonEl) {
-  // Visual effects
+  // visual effects
   triggerOperatorGlow(op);
   highlightActiveOperator(buttonEl);
 
   if (waitingForOperand) {
-    /*
-     * Operator pressed again without entering a number in between.
-     * e.g. user pressed "5 + ×" — just switch the operator.
-     * Update liveExpr to show the new operator.
-     */
-    operator = op;
+       operator = op;
     liveExpr = `${previousValue} ${op} `;
     refreshExpressionLine();
     return;
   }
 
   if (operator && !justCalculated) {
-    /*
-     * There's already a pending operation with a second operand typed.
-     * Chain-calculate it before setting up the new operator.
-     * e.g. "5 + 3 ×" → evaluates "5 + 3 = 8", then sets up "8 ×"
-     */
-    const chainResult = calculate(previousValue, currentValue, operator);
+       const chainResult = calculate(previousValue, currentValue, operator);
     currentValue = chainResult;
     updateMainDisplay(currentValue);
   }
 
-  // Store the current number as the left operand
   previousValue = currentValue;
   operator      = op;
 
-  // Build the expression preview string (includes trailing space)
   liveExpr = `${previousValue} ${op} `;
 
-  // Flag that we're now waiting for the second operand
   waitingForOperand = true;
   justCalculated    = false;
 
   refreshExpressionLine();
 }
 
-/**
- * handleEqual()
- * Evaluates the pending operation and shows the result.
- * Also saves the calculation to history.
- */
 function handleEqual() {
-  // Nothing to calculate if no operator or no left operand
   if (!operator || previousValue === '') return;
 
-  // Ignore if we're still waiting for the second number
-  // (operator pressed but no digit typed yet)
   if (waitingForOperand) return;
 
-  // Build full expression string for display + history
   const fullExpr = `${previousValue} ${operator} ${currentValue}`;
 
-  // Perform the calculation
   const result = calculate(previousValue, currentValue, operator);
 
-  // Show completed expression in the small line: "2 + 2 ="
   updateExpressionDisplay(`${fullExpr} =`);
 
-  // Save to history (only if not an error)
   addToHistory(fullExpr, result);
 
-  // Update calculator state
   currentValue      = result;
   previousValue     = '';
   operator          = null;
@@ -564,10 +360,6 @@ function handleEqual() {
   }
 }
 
-/**
- * handleClear()
- * Resets the entire calculator to its initial state (AC button).
- */
 function handleClear() {
   currentValue      = '0';
   previousValue     = '';
@@ -588,10 +380,6 @@ function handleClear() {
   if (resultTimer) clearTimeout(resultTimer);
 }
 
-/**
- * handleDelete()
- * Removes the last character typed (DEL button / Backspace key).
- */
 function handleDelete() {
   // If a result is showing, DEL acts like AC
   if (justCalculated || waitingForOperand) {
@@ -605,11 +393,6 @@ function handleDelete() {
   refreshExpressionLine();
 }
 
-/**
- * handlePercent()
- * Converts the current number to a percentage (divides by 100).
- * e.g. 50 → 0.5  |  200 → 2
- */
 function handlePercent() {
   if (currentValue === '0' || currentValue === 'Error') return;
 
@@ -619,14 +402,10 @@ function handlePercent() {
   refreshExpressionLine();
 }
 
-/* ─────────────────────────────────────────────────────────
-   12. EVENT LISTENERS — Button clicks (Event Delegation)
-   One listener on the grid parent handles ALL button clicks.
-   ───────────────────────────────────────────────────────── */
+// event listeners
 const buttonGrid = document.querySelector('.button-grid');
 
 buttonGrid.addEventListener('click', function (event) {
-  // Walk up the DOM from the click target to find the button
   const button = event.target.closest('.btn');
   if (!button) return;
 
@@ -648,11 +427,7 @@ buttonGrid.addEventListener('click', function (event) {
   }
 });
 
-/* ─────────────────────────────────────────────────────────
-   13. KEYBOARD SUPPORT
-   Maps physical keyboard keys to calculator buttons.
-   Pressing a key also triggers the on-screen button animation.
-   ───────────────────────────────────────────────────────── */
+// keyboard support
 document.addEventListener('keydown', function (event) {
   const key = event.key;
 
@@ -696,11 +471,7 @@ document.addEventListener('keydown', function (event) {
   if (btn) btn.click(); // Triggers full click flow including animation
 });
 
-/* ─────────────────────────────────────────────────────────
-   14. PARTICLE SYSTEM
-   Soft floating dots drawn on the background canvas.
-   Pure visual ambience — does not affect functionality.
-   ───────────────────────────────────────────────────────── */
+// particle system
 const canvas = document.getElementById('particle-canvas');
 const ctx    = canvas.getContext('2d');
 
@@ -760,11 +531,7 @@ function drawParticles() {
   requestAnimationFrame(drawParticles);
 }
 
-/* ─────────────────────────────────────────────────────────
-   15. RUNTIME STYLE INJECTION
-   Injects the display pop keyframe so it replays on every update.
-   Done here so the animation class doesn't need to be in style.css.
-   ───────────────────────────────────────────────────────── */
+// display animation
 (function injectAnimations() {
   const style = document.createElement('style');
   style.textContent = `
@@ -780,25 +547,23 @@ function drawParticles() {
   document.head.appendChild(style);
 })();
 
-/* ─────────────────────────────────────────────────────────
-   16. INITIALISATION
-   ───────────────────────────────────────────────────────── */
+// init
 function init() {
   resizeCanvas();
   initParticles();
   drawParticles();
 
-  // Rescatter particles on window resize
+  
   window.addEventListener('resize', () => {
     resizeCanvas();
     initParticles();
   });
 
-  // Set initial UI state
+  
   updateMainDisplay('0');
   updateExpressionDisplay('');
   setModeBadge('CALC');
-  renderHistory(); // Renders empty state
+  renderHistory(); 
 }
 
 init();
