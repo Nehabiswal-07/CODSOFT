@@ -15,7 +15,7 @@ const PORTFOLIO_CONFIG = {
         tagline: "Motivated B.Tech CSE student (CGPA 9.27) and double ISIH hackathon winner. Passionate about full-stack development, AI integrations, and building optimized applications.",
         location: "Odisha, India",
         resumeUrl: "https://drive.google.com/file/d/17hPLGkBwrAqaR18kGehnrNkONvm8Cuh_/view?usp=sharing",
-        profileImg: "assets/images/profile.jpg",
+        profileImg: "./images/profile.jpg",
         availableForWork: true,
 
         email: "biswalsubhadarshini943@gmail.com",
