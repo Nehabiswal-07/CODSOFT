@@ -1,13 +1,3 @@
-/* ==========================================================================
-   NEHA BISWAL PORTFOLIO - CENTRAL CONFIGURATION (config.js)
-   --------------------------------------------------------------------------
-   This file stores all content and settings for the portfolio.
-   Every card (education, project, skill, learning milestone, certification,
-   achievement, goal) has a unique 'id' and 'details' fields.
-   Clicking any card in the portfolio will dynamically open a premium modal
-   with these details.
-   ========================================================================== */
-
 const PORTFOLIO_CONFIG = {
     // ----------------------------------------------------------------------
     // 1. PROFILE & SOCIAL LINKS
@@ -25,7 +15,7 @@ const PORTFOLIO_CONFIG = {
         tagline: "Motivated B.Tech CSE student (CGPA 9.27) and double ISIH hackathon winner. Passionate about full-stack development, AI integrations, and building optimized applications.",
         location: "Odisha, India",
         resumeUrl: "https://drive.google.com/file/d/17hPLGkBwrAqaR18kGehnrNkONvm8Cuh_/view?usp=sharing",
-        profileImg: "./images/profile.jpg",
+        profileImg: "assets/images/profile.jpg",
         availableForWork: true,
 
         email: "biswalsubhadarshini943@gmail.com",
@@ -303,7 +293,7 @@ const PORTFOLIO_CONFIG = {
             tagline: "Personalized budget and financial planning dashboard",
             shortDesc: "A budgeting platform enabling users to track goals and estimate monthly expenses.",
             longDesc: "ASPIRE_PLAN is a budget and financial planning dashboard designed to help users track personal budgets, log saving milestones, and estimate monthly expenses. Built with a MERN stack, it helps users structure their savings goals and track budget outcomes.",
-            img: "./images/aspireplan.png",
+            img: "assets/images/aspireplan.png",
             techs: ["React.js", "Node.js", "MongoDB", "Express.js"],
             modalTechs: ["React.js", "Node.js", "Express.js", "MongoDB", "Mongoose", "JavaScript", "NoSQL"],
             filterCategories: ["ai", "fullstack"],
@@ -325,7 +315,7 @@ const PORTFOLIO_CONFIG = {
             tagline: "Drug inventory & logistics dashboard",
             shortDesc: "A drug inventory dashboard with real-time stock indicators and local tracking.",
             longDesc: "DemandMed is a web application designed to manage drug inventories and track orders between local clinics. It provides simple stock status indicators, warning alerts when inventory levels fall low, and query filters to trace clinic demand patterns.",
-            img: "./images/demandmed.png",
+            img: "assets/images/demandmed.png",
             techs: ["React.js", "Node.js", "MySQL", "JavaScript"],
             modalTechs: ["HTML", "CSS", "JavaScript", "React.js", "Node.js", "Express.js", "MySQL"],
             filterCategories: ["web", "fullstack"],
@@ -347,7 +337,7 @@ const PORTFOLIO_CONFIG = {
             tagline: "Smart study workspace & task organizer",
             shortDesc: "A study workspace integrating task boards, focus timers, and browser speech APIs.",
             longDesc: "TaskTide is a frontend productivity platform designed to help students organize study sessions and track assignments. It integrates browser Web Speech APIs for speech-to-text task logging, custom Pomodoro focus timers, and local storage state persistence.",
-            img: "./images/tasktide.png",
+            img: "assets/images/tasktide.png",
             techs: ["React.js", "TypeScript", "CSS", "Web Speech API"],
             modalTechs: ["React.js", "TypeScript", "HTML5", "CSS3", "Web Speech API", "Local Storage"],
             filterCategories: ["ai", "fullstack", "uiux"],
