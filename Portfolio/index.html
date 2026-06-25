@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neha Biswal | B.Tech CSE Student & Developer Portfolio</title>
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Neha Biswal's authentic student software developer portfolio. B.Tech Computer Science & Engineering student at Amity University. Projects include TaskTide, ASPIRE_PLAN, and DemandMed.">
-    <meta name="keywords" content="Neha Biswal, CSE Student, Portfolio, Amity University, Odisha, India, Web Developer, CodSoft Intern">
+    <meta name="description"
+        content="Neha Biswal's authentic student software developer portfolio. B.Tech Computer Science & Engineering student at Amity University. Projects include TaskTide, ASPIRE_PLAN, and DemandMed.">
+    <meta name="keywords"
+        content="Neha Biswal, CSE Student, Portfolio, Amity University, Odisha, India, Web Developer, CodSoft Intern">
     <meta name="author" content="Neha Biswal">
-    
+
     <!-- Google Fonts: Outfit & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Custom Style Sheet -->
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="dark-mode">
 
     <!-- Interactive Background Canvas -->
@@ -59,372 +65,415 @@
     <div id="app-container">
         <!-- Premium Sticky Header & Navbar -->
         <header id="main-header">
-        <div class="navbar container">
-            <a href="#home" class="nav-logo" id="nav-logo-link">
-                <span class="logo-bracket">&lt;</span>
-                <span class="logo-text" id="nav-logo-text">Neha Biswal</span>
-                <span class="logo-bracket">/&gt;</span>
-                <span class="logo-dot"></span>
-            </a>
-            
-            <!-- Desktop Navigation Menu -->
-            <nav class="nav-menu" id="nav-menu-desktop">
-                <a href="#home" class="nav-link active" id="nav-link-home"><i data-lucide="home"></i> Home</a>
-                <a href="#about" class="nav-link" id="nav-link-about"><i data-lucide="user"></i> About</a>
-                <a href="#education" class="nav-link" id="nav-link-education"><i data-lucide="graduation-cap"></i> Education</a>
-                <a href="#skills" class="nav-link" id="nav-link-skills"><i data-lucide="cpu"></i> Skills</a>
-                <a href="#projects" class="nav-link" id="nav-link-projects"><i data-lucide="folder-git-2"></i> Projects</a>
-                <a href="#journey" class="nav-link" id="nav-link-journey"><i data-lucide="route"></i> Learning Journey</a>
-                <a href="#achievements" class="nav-link" id="nav-link-achievements"><i data-lucide="trophy"></i> Achievements</a>
-                <a href="#contact" class="nav-link" id="nav-link-contact"><i data-lucide="mail"></i> Contact</a>
+            <div class="navbar container">
+                <a href="#home" class="nav-logo" id="nav-logo-link">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text" id="nav-logo-text">Neha Biswal</span>
+                    <span class="logo-bracket">/&gt;</span>
+                    <span class="logo-dot"></span>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="nav-menu" id="nav-menu-desktop">
+                    <a href="#home" class="nav-link active" id="nav-link-home"><i data-lucide="home"></i> Home</a>
+                    <a href="#about" class="nav-link" id="nav-link-about"><i data-lucide="user"></i> About</a>
+                    <a href="#education" class="nav-link" id="nav-link-education"><i data-lucide="graduation-cap"></i>
+                        Education</a>
+                    <a href="#skills" class="nav-link" id="nav-link-skills"><i data-lucide="cpu"></i> Skills</a>
+                    <a href="#projects" class="nav-link" id="nav-link-projects"><i data-lucide="folder-git-2"></i>
+                        Projects</a>
+                    <a href="#journey" class="nav-link" id="nav-link-journey"><i data-lucide="route"></i> Learning
+                        Journey</a>
+                    <a href="#achievements" class="nav-link" id="nav-link-achievements"><i data-lucide="trophy"></i>
+                        Achievements</a>
+                    <a href="#contact" class="nav-link" id="nav-link-contact"><i data-lucide="mail"></i> Contact</a>
+                </nav>
+
+                <!-- Theme Toggle & Hamburger -->
+                <div class="nav-actions">
+                    <button id="theme-toggle-btn" class="action-btn" title="Toggle Theme" aria-label="Toggle Theme">
+                        <i data-lucide="moon" class="theme-icon-dark"></i>
+                        <i data-lucide="sun" class="theme-icon-light"></i>
+                    </button>
+
+                    <button id="mobile-menu-toggle" class="action-btn hamburger-btn" title="Toggle Menu"
+                        aria-label="Toggle Menu">
+                        <span class="hamburger-line line-1"></span>
+                        <span class="hamburger-line line-2"></span>
+                        <span class="hamburger-line line-3"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu Drawer -->
+            <nav class="mobile-nav-drawer" id="mobile-nav-drawer">
+                <div class="mobile-nav-links">
+                    <a href="#home" class="mobile-nav-link" id="m-nav-link-home"><i data-lucide="home"></i> Home</a>
+                    <a href="#about" class="mobile-nav-link" id="m-nav-link-about"><i data-lucide="user"></i> About</a>
+                    <a href="#education" class="mobile-nav-link" id="m-nav-link-education"><i
+                            data-lucide="graduation-cap"></i> Education</a>
+                    <a href="#skills" class="mobile-nav-link" id="m-nav-link-skills"><i data-lucide="cpu"></i>
+                        Skills</a>
+                    <a href="#projects" class="mobile-nav-link" id="m-nav-link-projects"><i
+                            data-lucide="folder-git-2"></i> Projects</a>
+                    <a href="#journey" class="mobile-nav-link" id="m-nav-link-journey"><i data-lucide="route"></i>
+                        Learning Journey</a>
+                    <a href="#achievements" class="mobile-nav-link" id="m-nav-link-achievements"><i
+                            data-lucide="trophy"></i> Achievements</a>
+                    <a href="#contact" class="mobile-nav-link" id="m-nav-link-contact"><i data-lucide="mail"></i>
+                        Contact</a>
+                </div>
             </nav>
+        </header>
 
-            <!-- Theme Toggle & Hamburger -->
-            <div class="nav-actions">
-                <button id="theme-toggle-btn" class="action-btn" title="Toggle Theme" aria-label="Toggle Theme">
-                    <i data-lucide="moon" class="theme-icon-dark"></i>
-                    <i data-lucide="sun" class="theme-icon-light"></i>
-                </button>
-                
-                <button id="mobile-menu-toggle" class="action-btn hamburger-btn" title="Toggle Menu" aria-label="Toggle Menu">
-                    <span class="hamburger-line line-1"></span>
-                    <span class="hamburger-line line-2"></span>
-                    <span class="hamburger-line line-3"></span>
-                </button>
-            </div>
-        </div>
+        <main>
 
-        <!-- Mobile Navigation Menu Drawer -->
-        <nav class="mobile-nav-drawer" id="mobile-nav-drawer">
-            <div class="mobile-nav-links">
-                <a href="#home" class="mobile-nav-link" id="m-nav-link-home"><i data-lucide="home"></i> Home</a>
-                <a href="#about" class="mobile-nav-link" id="m-nav-link-about"><i data-lucide="user"></i> About</a>
-                <a href="#education" class="mobile-nav-link" id="m-nav-link-education"><i data-lucide="graduation-cap"></i> Education</a>
-                <a href="#skills" class="mobile-nav-link" id="m-nav-link-skills"><i data-lucide="cpu"></i> Skills</a>
-                <a href="#projects" class="mobile-nav-link" id="m-nav-link-projects"><i data-lucide="folder-git-2"></i> Projects</a>
-                <a href="#journey" class="mobile-nav-link" id="m-nav-link-journey"><i data-lucide="route"></i> Learning Journey</a>
-                <a href="#achievements" class="mobile-nav-link" id="m-nav-link-achievements"><i data-lucide="trophy"></i> Achievements</a>
-                <a href="#contact" class="mobile-nav-link" id="m-nav-link-contact"><i data-lucide="mail"></i> Contact</a>
-            </div>
-        </nav>
-    </header>
+            <!-- HERO SECTION -->
+            <section id="home" class="hero-section fill-height reveal">
 
-    <main>
-        
-        <!-- HERO SECTION -->
-        <section id="home" class="hero-section fill-height reveal">
-
-            <!-- Floating Social Sidebar -->
-            <div class="hero-social-sidebar">
-                <a href="https://github.com/Nehabiswal-07" target="_blank" rel="noopener noreferrer" title="GitHub" class="sidebar-social-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                </a>
-                <a href="https://linkedin.com/in/neha-biswal-62618a328" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="sidebar-social-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-                <a href="https://github.com/Nehabiswal-07" target="_blank" rel="noopener noreferrer" title="Twitter" class="sidebar-social-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                </a>
-                <a href="mailto:biswalsubhadarshini943@gmail.com" title="Email" class="sidebar-social-link"><i data-lucide="mail"></i></a>
-            </div>
-
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <div class="badge-glowing" id="hero-badge-glowing-container">
-                        <!-- Loaded dynamically via config.js -->
-                    </div>
-                    <h1 class="hero-title" id="hero-title-container">
-                        Hi, I'm <span class="text-gradient" id="hero-profile-name">Neha Biswal</span>
-                    </h1>
-                    <h2 class="hero-subtitle">
-                        I am a <span id="typing-text" class="text-accent"></span><span class="typing-cursor">|</span>
-                    </h2>
-                    <p class="hero-description" id="hero-tagline-container">
-                        Loading tagline...
-                    </p>
-                    <div class="hero-ctas" id="hero-ctas-container">
-                        <!-- Loaded dynamically via JavaScript -->
-                    </div>
+                <!-- Floating Social Sidebar -->
+                <div class="hero-social-sidebar">
+                    <a href="https://github.com/Nehabiswal-07" target="_blank" rel="noopener noreferrer" title="GitHub"
+                        class="sidebar-social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-github">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                            </path>
+                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/neha-biswal-62618a328" target="_blank" rel="noopener noreferrer"
+                        title="LinkedIn" class="sidebar-social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-linkedin">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect width="4" height="12" x="2" y="9"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/Nehabiswal-07" target="_blank" rel="noopener noreferrer" title="Twitter"
+                        class="sidebar-social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-twitter">
+                            <path
+                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="mailto:biswalsubhadarshini943@gmail.com" title="Email" class="sidebar-social-link"><i
+                            data-lucide="mail"></i></a>
                 </div>
-                
-                <div class="hero-visual">
-                    <div class="profile-container" id="hero-profile-container">
-                        <div class="profile-image-wrapper">
-                            <img src="" alt="Professional Portrait" class="profile-img" id="hero-profile-img">
+
+                <div class="container hero-grid">
+                    <div class="hero-content">
+                        <div class="badge-glowing" id="hero-badge-glowing-container">
+                            <!-- Loaded dynamically via config.js -->
                         </div>
-                        
-                        <!-- Floating CGPA Badge Card -->
-                        <div class="floating-cgpa-card glass-panel">
-                            <div class="cgpa-label">CGPA</div>
-                            <div class="cgpa-value text-gradient">9.27</div>
-                            <div class="cgpa-desc">Consistent Performer</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hero-scroll-indicator">
-                <a href="#about" aria-label="Scroll to About Section">
-                    <i data-lucide="chevron-down" class="scroll-arrow"></i>
-                </a>
-            </div>
-        </section>
-
-
-        <!-- ABOUT SECTION -->
-        <section id="about" class="about-section section-padding reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title reveal-text">About Me</h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="about-grid about-grid--no-image">
-                    <div class="about-content">
-                        <h3 class="about-intro-title" id="about-bio-title">Loading Bio...</h3>
-                        <p class="about-text" id="about-intro-text">
-                            Loading introductory text...
+                        <h1 class="hero-title" id="hero-title-container">
+                            Hi, I'm <span class="text-gradient" id="hero-profile-name">Neha Biswal</span>
+                        </h1>
+                        <h2 class="hero-subtitle">
+                            I am a <span id="typing-text" class="text-accent"></span><span
+                                class="typing-cursor">|</span>
+                        </h2>
+                        <p class="hero-description" id="hero-tagline-container">
+                            Loading tagline...
                         </p>
-                        
-                        <!-- Expandable Read More Content -->
-                        <div class="expandable-content" id="about-expandable">
-                            <div class="expandable-inner" id="about-expanded-paragraphs">
+                        <div class="hero-ctas" id="hero-ctas-container">
+                            <!-- Loaded dynamically via JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <div class="profile-container" id="hero-profile-container">
+                            <div class="profile-image-wrapper">
+                                <img src="images/profile.jpg" alt="Professional Portrait" class="profile-img"
+                                    id="hero-profile-img">
+                            </div>
+
+                            <!-- Floating CGPA Badge Card -->
+                            <div class="floating-cgpa-card glass-panel">
+                                <div class="cgpa-label">CGPA</div>
+                                <div class="cgpa-value text-gradient">9.27</div>
+                                <div class="cgpa-desc">Consistent Performer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-scroll-indicator">
+                    <a href="#about" aria-label="Scroll to About Section">
+                        <i data-lucide="chevron-down" class="scroll-arrow"></i>
+                    </a>
+                </div>
+            </section>
+
+
+            <!-- ABOUT SECTION -->
+            <section id="about" class="about-section section-padding reveal">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title reveal-text">About Me</h2>
+                        <div class="section-line"></div>
+                    </div>
+
+                    <div class="about-grid about-grid--no-image">
+                        <div class="about-content">
+                            <h3 class="about-intro-title" id="about-bio-title">Loading Bio...</h3>
+                            <p class="about-text" id="about-intro-text">
+                                Loading introductory text...
+                            </p>
+
+                            <!-- Expandable Read More Content -->
+                            <div class="expandable-content" id="about-expandable">
+                                <div class="expandable-inner" id="about-expanded-paragraphs">
+                                    <!-- Loaded dynamically via JavaScript -->
+                                </div>
+                            </div>
+
+                            <button class="btn btn-expand btn-secondary" id="about-read-more-btn" aria-expanded="false"
+                                aria-controls="about-expandable">
+                                <span>Read More</span>
+                                <i data-lucide="chevron-down"></i>
+                            </button>
+
+                            <!-- Modular Location Card -->
+                            <div class="location-card-wrapper" id="about-location-card-container">
+                                <!-- Loaded dynamically via JavaScript -->
+                            </div>
+
+                            <!-- Dynamic Academic Stat Highlights -->
+                            <div class="about-highlights-grid" id="about-highlights-container">
                                 <!-- Loaded dynamically via JavaScript -->
                             </div>
                         </div>
-                        
-                        <button class="btn btn-expand btn-secondary" id="about-read-more-btn" aria-expanded="false" aria-controls="about-expandable">
-                            <span>Read More</span>
-                            <i data-lucide="chevron-down"></i>
-                        </button>
-                        
-                        <!-- Modular Location Card -->
-                        <div class="location-card-wrapper" id="about-location-card-container">
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- EDUCATION JOURNEY SECTION -->
+            <section id="education" class="education-section section-padding">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title reveal-text">Education Journey</h2>
+                        <div class="section-line"></div>
+                    </div>
+
+                    <!-- Glowing academic stat counters -->
+                    <div class="education-stats-grid" id="education-stats-container">
+                        <!-- Loaded dynamically via JavaScript -->
+                    </div>
+
+                    <div class="education-timeline-vertical" id="education-timeline-container">
+                        <!-- Loaded dynamically via JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- SKILLS SECTION -->
+            <section id="skills" class="skills-section section-padding reveal">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title reveal-text">Technical Skills</h2>
+                        <div class="section-line"></div>
+                    </div>
+
+                    <div class="skills-grid" id="skills-categories-grid">
+                        <!-- Loaded dynamically via JavaScript -->
+                    </div>
+
+                    <!-- Skill Pills Ribbon -->
+                    <div class="skills-ribbon" id="skills-pills-ribbon">
+                        <!-- Loaded dynamically via JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- PROJECTS SECTION -->
+            <section id="projects" class="projects-section section-padding reveal">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title reveal-text">Featured Projects</h2>
+                        <div class="section-line"></div>
+                    </div>
+
+                    <div class="projects-grid" id="projects-cards-grid">
+                        <!-- Loaded dynamically via JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- LEARNING JOURNEY SECTION -->
+            <section id="journey" class="journey-section section-padding reveal">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title reveal-text">Learning Journey</h2>
+                        <div class="section-line"></div>
+                    </div>
+
+                    <!-- Subsection 1: Growth Journey -->
+                    <div class="journey-subsection">
+                        <h3 class="journey-sub-title"><i data-lucide="route"></i> Growth Path</h3>
+                        <div class="journey-timeline" id="journey-timeline-container">
+                            <!-- Loaded dynamically via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Subsection 2: Currently Learning -->
+                    <div class="journey-subsection" id="currently-learning">
+                        <h3 class="journey-sub-title"><i data-lucide="terminal"></i> Currently Learning</h3>
+                        <div class="currently-learning-grid" id="currently-learning-grid-container">
+                            <!-- Loaded dynamically via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Subsection 3: Future Goals -->
+                    <div class="journey-subsection" id="future-goals">
+                        <h3 class="journey-sub-title"><i data-lucide="git-merge"></i> Future Goals</h3>
+                        <div class="goals-grid" id="future-goals-grid-container">
+                            <!-- Loaded dynamically via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ACHIEVEMENTS SECTION -->
+            <section id="achievements" class="achievements-section section-padding reveal">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title reveal-text">Achievements</h2>
+                        <div class="section-line"></div>
+                    </div>
+
+                    <div class="timeline-container" id="achievements-timeline-container">
+                        <div class="timeline-line"></div>
+                        <!-- Loaded dynamically via JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- CONTACT SECTION -->
+            <section id="contact" class="contact-section section-padding reveal">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title reveal-text">Get In Touch</h2>
+                        <div class="section-line"></div>
+                    </div>
+
+                    <div class="contact-grid">
+                        <!-- Left: Contact Details Cards -->
+                        <div class="contact-info-panel" id="contact-info-cards-container">
                             <!-- Loaded dynamically via JavaScript -->
                         </div>
 
-                        <!-- Dynamic Academic Stat Highlights -->
-                        <div class="about-highlights-grid" id="about-highlights-container">
-                            <!-- Loaded dynamically via JavaScript -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        <!-- Right: Glassmorphic Contact Form -->
+                        <div class="contact-form-panel glass-panel">
+                            <div class="card-glow-bg"></div>
+                            <h3 class="form-title">Send a Quick Message</h3>
 
-
-        <!-- EDUCATION JOURNEY SECTION -->
-        <section id="education" class="education-section section-padding">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title reveal-text">Education Journey</h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <!-- Glowing academic stat counters -->
-                <div class="education-stats-grid" id="education-stats-container">
-                    <!-- Loaded dynamically via JavaScript -->
-                </div>
-                
-                <div class="education-timeline-vertical" id="education-timeline-container">
-                    <!-- Loaded dynamically via JavaScript -->
-                </div>
-            </div>
-        </section>
-
-
-        <!-- SKILLS SECTION -->
-        <section id="skills" class="skills-section section-padding reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title reveal-text">Technical Skills</h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="skills-grid" id="skills-categories-grid">
-                    <!-- Loaded dynamically via JavaScript -->
-                </div>
-                
-                <!-- Skill Pills Ribbon -->
-                <div class="skills-ribbon" id="skills-pills-ribbon">
-                    <!-- Loaded dynamically via JavaScript -->
-                </div>
-            </div>
-        </section>
-
-
-        <!-- PROJECTS SECTION -->
-        <section id="projects" class="projects-section section-padding reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title reveal-text">Featured Projects</h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="projects-grid" id="projects-cards-grid">
-                    <!-- Loaded dynamically via JavaScript -->
-                </div>
-            </div>
-        </section>
-
-
-        <!-- LEARNING JOURNEY SECTION -->
-        <section id="journey" class="journey-section section-padding reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title reveal-text">Learning Journey</h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <!-- Subsection 1: Growth Journey -->
-                <div class="journey-subsection">
-                    <h3 class="journey-sub-title"><i data-lucide="route"></i> Growth Path</h3>
-                    <div class="journey-timeline" id="journey-timeline-container">
-                        <!-- Loaded dynamically via JavaScript -->
-                    </div>
-                </div>
-                
-                <!-- Subsection 2: Currently Learning -->
-                <div class="journey-subsection" id="currently-learning">
-                    <h3 class="journey-sub-title"><i data-lucide="terminal"></i> Currently Learning</h3>
-                    <div class="currently-learning-grid" id="currently-learning-grid-container">
-                        <!-- Loaded dynamically via JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Subsection 3: Future Goals -->
-                <div class="journey-subsection" id="future-goals">
-                    <h3 class="journey-sub-title"><i data-lucide="git-merge"></i> Future Goals</h3>
-                    <div class="goals-grid" id="future-goals-grid-container">
-                        <!-- Loaded dynamically via JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ACHIEVEMENTS SECTION -->
-        <section id="achievements" class="achievements-section section-padding reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title reveal-text">Achievements</h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="timeline-container" id="achievements-timeline-container">
-                    <div class="timeline-line"></div>
-                    <!-- Loaded dynamically via JavaScript -->
-                </div>
-            </div>
-        </section>
-
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="contact-section section-padding reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title reveal-text">Get In Touch</h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="contact-grid">
-                    <!-- Left: Contact Details Cards -->
-                    <div class="contact-info-panel" id="contact-info-cards-container">
-                        <!-- Loaded dynamically via JavaScript -->
-                    </div>
-
-                    <!-- Right: Glassmorphic Contact Form -->
-                    <div class="contact-form-panel glass-panel">
-                        <div class="card-glow-bg"></div>
-                        <h3 class="form-title">Send a Quick Message</h3>
-                        
-                        <form id="contact-form" novalidate>
-                            <div class="input-group">
-                                <label for="form-name">Full Name</label>
-                                <div class="input-wrapper">
-                                    <i data-lucide="user" class="input-icon"></i>
-                                    <input type="text" id="form-name" name="name" placeholder="Enter your name" required>
+                            <form id="contact-form" novalidate>
+                                <div class="input-group">
+                                    <label for="form-name">Full Name</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="user" class="input-icon"></i>
+                                        <input type="text" id="form-name" name="name" placeholder="Enter your name"
+                                            required>
+                                    </div>
+                                    <span class="error-msg" id="name-error">Please enter your name</span>
                                 </div>
-                                <span class="error-msg" id="name-error">Please enter your name</span>
-                            </div>
 
-                            <div class="input-group">
-                                <label for="form-email">Email Address</label>
-                                <div class="input-wrapper">
-                                    <i data-lucide="mail" class="input-icon"></i>
-                                    <input type="email" id="form-email" name="email" placeholder="Enter your email" required>
+                                <div class="input-group">
+                                    <label for="form-email">Email Address</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="mail" class="input-icon"></i>
+                                        <input type="email" id="form-email" name="email" placeholder="Enter your email"
+                                            required>
+                                    </div>
+                                    <span class="error-msg" id="email-error">Please enter a valid email address</span>
                                 </div>
-                                <span class="error-msg" id="email-error">Please enter a valid email address</span>
-                            </div>
 
-                            <div class="input-group">
-                                <label for="form-message">Your Message</label>
-                                <div class="input-wrapper text-area-wrapper">
-                                    <i data-lucide="message-square" class="input-icon text-area-icon"></i>
-                                    <textarea id="form-message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                                <div class="input-group">
+                                    <label for="form-message">Your Message</label>
+                                    <div class="input-wrapper text-area-wrapper">
+                                        <i data-lucide="message-square" class="input-icon text-area-icon"></i>
+                                        <textarea id="form-message" name="message" rows="5"
+                                            placeholder="Write your message here..." required></textarea>
+                                    </div>
+                                    <span class="error-msg" id="message-error">Please enter a message</span>
                                 </div>
-                                <span class="error-msg" id="message-error">Please enter a message</span>
-                            </div>
 
-                            <button type="submit" class="btn btn-primary btn-full-width" id="form-submit-btn">
-                                <span>Send Message</span>
-                                <i data-lucide="send" class="btn-send-icon"></i>
-                            </button>
-                        </form>
-                        
-                        <!-- Success Animation Overlay (Hidden by Default) -->
-                        <div id="form-success-overlay" class="form-feedback-overlay">
-                            <div class="feedback-content">
-                                <div class="checkmark-circle">
-                                    <svg class="checkmark-svg" viewBox="0 0 52 52">
-                                        <circle class="checkmark-circle-line" cx="26" cy="26" r="25" fill="none"/>
-                                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                                    </svg>
+                                <button type="submit" class="btn btn-primary btn-full-width" id="form-submit-btn">
+                                    <span>Send Message</span>
+                                    <i data-lucide="send" class="btn-send-icon"></i>
+                                </button>
+                            </form>
+
+                            <!-- Success Animation Overlay (Hidden by Default) -->
+                            <div id="form-success-overlay" class="form-feedback-overlay">
+                                <div class="feedback-content">
+                                    <div class="checkmark-circle">
+                                        <svg class="checkmark-svg" viewBox="0 0 52 52">
+                                            <circle class="checkmark-circle-line" cx="26" cy="26" r="25" fill="none" />
+                                            <path class="checkmark-check" fill="none"
+                                                d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                                        </svg>
+                                    </div>
+                                    <h4>Message Sent Successfully!</h4>
+                                    <p>Thank you for getting in touch. Neha will respond to your message shortly.</p>
+                                    <button class="btn btn-secondary btn-small" id="success-close-btn">Dismiss</button>
                                 </div>
-                                <h4>Message Sent Successfully!</h4>
-                                <p>Thank you for getting in touch. Neha will respond to your message shortly.</p>
-                                <button class="btn btn-secondary btn-small" id="success-close-btn">Dismiss</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
+
+        </main>
+
+        <!-- PREMIUM FOOTER -->
+        <footer id="main-footer">
+            <div class="container footer-content" id="footer-details-container">
+                <!-- Loaded dynamically via JavaScript -->
             </div>
-        </section>
+        </footer>
 
-    </main>
+        <!-- CENTRAL DETAIL MODAL OVERLAY (DYNAMIC POPULATION) -->
+        <div id="dynamic-details-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="modal-container glass-panel">
+                <div class="modal-header-nav">
+                    <button class="modal-back-btn" id="details-modal-back-btn" aria-label="Go Back">
+                        <i data-lucide="arrow-left"></i>
+                        <span>Back</span>
+                    </button>
+                    <button class="modal-x-btn" id="details-modal-close-btn" aria-label="Close Modal">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
 
-    <!-- PREMIUM FOOTER -->
-    <footer id="main-footer">
-        <div class="container footer-content" id="footer-details-container">
-            <!-- Loaded dynamically via JavaScript -->
+                <div class="modal-content" id="details-modal-content">
+                    <!-- Loaded dynamically on card click -->
+                </div>
+            </div>
         </div>
-    </footer>
-
-    <!-- CENTRAL DETAIL MODAL OVERLAY (DYNAMIC POPULATION) -->
-    <div id="dynamic-details-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="modal-container glass-panel">
-            <div class="modal-header-nav">
-                <button class="modal-back-btn" id="details-modal-back-btn" aria-label="Go Back">
-                    <i data-lucide="arrow-left"></i>
-                    <span>Back</span>
-                </button>
-                <button class="modal-x-btn" id="details-modal-close-btn" aria-label="Close Modal">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            
-            <div class="modal-content" id="details-modal-content">
-                <!-- Loaded dynamically on card click -->
-            </div>
-        </div>
-    </div>
 
     </div><!-- #app-container -->
 
     <!-- Central Configuration File -->
     <script src="config.js?v=4"></script>
-    
+
     <!-- Custom Script File -->
     <script src="script.js?v=4"></script>
 </body>
+
 </html>
