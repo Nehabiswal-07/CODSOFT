@@ -1,11 +1,3 @@
-/* ==========================================================================
-   NEHA BISWAL PORTFOLIO - CORE JAVASCRIPT & RENDERING ENGINE
-   --------------------------------------------------------------------------
-   This script dynamically loads the portfolio data from config.js,
-   builds the HTML components at runtime, and sets up all interactive behaviors
-   (theme toggle, typing loop, unified details modals, cursor tracking, and validation).
-   ========================================================================== */
-
 const startPortfolio = () => {
 
     /* --------------------------------------------------------------------------
@@ -602,14 +594,6 @@ const startPortfolio = () => {
                     <div class="info-text">
                         <span>Email Me</span>
                         <a href="mailto:${profile.email}" class="info-link">${profile.email}</a>
-                    </div>
-                </div>
-
-                <div class="info-card glass-panel">
-                    <i data-lucide="phone" class="info-icon text-blue"></i>
-                    <div class="info-text">
-                        <span>Call Me</span>
-                        <a href="tel:${profile.phone.replace(/\s+/g, '')}" class="info-link">${profile.phone}</a>
                     </div>
                 </div>
 
